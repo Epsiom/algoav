@@ -5,7 +5,8 @@
 #include "Node.h"
 
 Node::Node(){
-    //TODO
+    current_target_number = 0;
+    vector<Node*> link_targets();
 }
 
 Node::~Node(){

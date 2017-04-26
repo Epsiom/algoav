@@ -7,6 +7,7 @@
 
 class Node {
 private:
+    int current_target_number;
     vector<Node*> link_targets;
 public:
     Node();
