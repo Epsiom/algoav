@@ -3,23 +3,31 @@
 //
 
 #include "Graph.h"
+#include "Node.h"
 #include <vector>
+#include <iostream>
 
 using namespace std;
 
 Graph::Graph(int _n, double _p){
     n = _n;
     p = _p;
-    vector<Node*> node_list(n);
-    //for (int i=0; i<n; ++i){
-        //TODO:le vecteur est-il bien initialise? Ensuite, mettre les noeuds dans le vecteur, puis appeller link_nodes
-    //}
+    vector<Node*> node_list((unsigned long)n);
+    for (int i=0; i<n; ++i){
+        Node* new_node = new Node(i);
+        node_list.push_back(new_node);
+    }
+    link_nodes(0);
 }
 
-void Graph::link_nodes(double _p) {
-    //TODO
+//Recursively link every possible node pair with a probability of p
+void Graph::link_nodes(int _start) {
+    Node* to_link = node_list.at((unsigned long)_start);
+    for (int i=_start+1; i<n; i++){
+        to_link->link(node_list.at((unsigned long)i), p);
+    }
 }
 
 Graph::~Graph() {
-    //TODO
+    //TODO?
 }
