@@ -2,8 +2,8 @@
 // Created by steven on 21/04/17.
 //
 
-#include "Graph.h"
 #include "Node.h"
+#include "Graph.h"
 #include <vector>
 #include <iostream>
 
