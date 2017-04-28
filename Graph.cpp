@@ -12,7 +12,6 @@ using namespace std;
 Graph::Graph(int _n, double _p){
     n = _n;
     p = _p;
-    vector<Node*> node_list((unsigned long)n);
     for (int i=0; i<n; ++i){
         Node* new_node = new Node(i);
         node_list.push_back(new_node);
