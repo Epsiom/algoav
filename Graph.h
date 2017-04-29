@@ -13,8 +13,9 @@ private:
     double p;
     std::vector<Node*> node_list;
     void link_nodes(int _start);
+    void link_nodes_bip(int _start);
 public:
-    Graph(int _n, double _p);
+    Graph(int _n, double _p, bool _isBipartie);
     ~Graph();
 };
 
