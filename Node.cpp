@@ -22,17 +22,10 @@ Node::~Node(){
 }
 
 void Node::link(Node *target, double _p) {
-    srand(time(NULL));
     double dice_roll_0_to_1 = (double)rand() / (RAND_MAX + 1.0);    //Random double between 0 and 1
-    //TODO: fix
 
     if (dice_roll_0_to_1 < _p){
-        //The chance has spoken : the link must be created
-        //if (current_target_number > 20){
-        //    link_targets.resize((unsigned long)current_target_number);
-        //}
         current_target_number++;
         link_targets.push_back(target);
     }
-    std::cout << current_target_number << "|name=" << name << std::endl;
 }

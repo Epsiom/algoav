@@ -25,6 +25,9 @@ void Graph::link_nodes(int _start) {
     for (int i=_start+1; i<n; i++){
         to_link->link(node_list.at((unsigned long)i), p);
     }
+    if (_start+1 < n){  //No need to do it for the nth node
+        link_nodes(_start+1);
+    }
 }
 
 Graph::~Graph() {
