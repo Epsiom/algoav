@@ -72,7 +72,6 @@ bool** Graph::generate_edmonds_matrix(){
             //and thus, we have to substract n/2 to the value of the columns labels
             int target_name = (studied->get_link_target().at((unsigned long) j)->get_name()) - n/2;
             edm[i][target_name] = 1;
-            edm[target_name][i] = 1;
         }
     }
     return edm;
