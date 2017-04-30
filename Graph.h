@@ -11,11 +11,11 @@ class Graph {
 private:
     int n;
     double p;
-    std::vector<Node*> node_list;
     void link_nodes(int _start);
     void link_nodes_bip(int _start);
     bool** generate_edmonds_matrix();
 public:
+    std::vector<Node*> node_list;
     Graph(int _n, double _p, bool _isBipartite);
     ~Graph();
 };
