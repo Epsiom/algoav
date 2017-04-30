@@ -21,11 +21,19 @@ Node::~Node(){
     //TODO?
 }
 
+//Link this node with another with a probability of p (Register for both nodes by using the other link function below)
 void Node::link(Node *target, double _p) {
     double dice_roll_0_to_1 = (double)rand() / (RAND_MAX + 1.0);    //Random double between 0 and 1
 
     if (dice_roll_0_to_1 < _p){
         current_target_number++;
         link_targets.push_back(target);
+        target->link(this);
     }
+}
+
+//Register a link initiated by another node for this node only
+void Node::link(Node *target){
+    current_target_number++;
+    link_targets.push_back(target);
 }

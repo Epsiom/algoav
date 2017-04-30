@@ -9,14 +9,14 @@
 
 using namespace std;
 
-Graph::Graph(int _n, double _p, bool _isBipartie){
+Graph::Graph(int _n, double _p, bool _isBipartite){
     n = _n;
     p = _p;
     for (int i = 0; i < n; ++i) {
         Node *new_node = new Node(i);
         node_list.push_back(new_node);
     }
-    if (_isBipartie){
+    if (_isBipartite){
         link_nodes_bip(0);
     }
     else {
@@ -44,6 +44,28 @@ void Graph::link_nodes_bip(int _start){
     if (_start+1 < second_half){
         link_nodes_bip(_start+1);
     }
+}
+
+//Only use when the current graph is bipartite
+//Generate an edmond matrix of the current graph
+bool** Graph::generate_edmonds_matrix(){
+    bool** edm = 0;
+    int size = n/2;
+    edm = new bool*[size];
+
+    //Initial filling of the array
+    for (int i=0; i<size; i++)
+    {
+        edm[i] = new bool[size];
+        for (int j=0; j<size; j++)
+        {
+            edm[i][j] = 0;
+        }
+    }
+
+    //TODO: fill
+
+    return edm;
 }
 
 Graph::~Graph() {

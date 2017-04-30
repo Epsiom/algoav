@@ -16,6 +16,7 @@ public:
     Node(int _name);
     ~Node();
     void link(Node* target, double _p);
+    void link(Node* target);
 };
 
 #endif //PROJET_NODE_H
