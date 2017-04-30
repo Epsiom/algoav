@@ -63,8 +63,18 @@ bool** Graph::generate_edmonds_matrix(){
         }
     }
 
-    //TODO: fill
-
+    for (int i=0; i<n/2; i++){
+        Node* studied = node_list.at((unsigned long)i);
+        for (int j=0; j<studied->get_current_target_number(); j++){
+            //Find the name of the target of each link of this node, and assigns 1 in the matching column
+            //then fills the same value at the symmetric position in the array
+            //Warning: the name of each nodes is in [0;n] as in the array, the rows and columns are both [0;n/2]
+            //and thus, we have to substract n/2 to the value of the columns labels
+            int target_name = (studied->get_link_target().at((unsigned long) j)->get_name()) - n/2;
+            edm[i][target_name] = 1;
+            edm[target_name][i] = 1;
+        }
+    }
     return edm;
 }
 

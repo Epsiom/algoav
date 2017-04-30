@@ -37,3 +37,15 @@ void Node::link(Node *target){
     current_target_number++;
     link_targets.push_back(target);
 }
+
+int Node::get_current_target_number() {
+    return current_target_number;
+}
+
+std::vector<Node*> Node::get_link_target() {
+    return link_targets;
+}
+
+int Node::get_name() {
+    return name;
+}

@@ -17,6 +17,9 @@ public:
     ~Node();
     void link(Node* target, double _p);
     void link(Node* target);
+    int get_name();
+    int get_current_target_number();
+    std::vector<Node*> get_link_target();
 };
 
 #endif //PROJET_NODE_H
