@@ -14,11 +14,11 @@
 Node::Node(int _name){
     name = _name;
     current_target_number = 0;
-    std::vector<Node*> link_targets;
 }
 
 Node::~Node(){
     //TODO?
+    link_targets.clear();
 }
 
 //Link this node with another with a probability of p (Register for both nodes by using the other link function below)

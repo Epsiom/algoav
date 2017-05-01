@@ -5,7 +5,9 @@
       <sourceFolder url="file://$MODULE_DIR$/Node.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Graph.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Node.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/EdmondsKarp.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Graph.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/EdmondsKarp.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Blossom.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Blossom.h" isTestSource="false" />

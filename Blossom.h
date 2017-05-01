@@ -19,7 +19,7 @@ private:
     int pairs = 0;
 public:
     void add_edge(int u, int v);
-    int LCA(int root, int u, int v);
+    int findBlossom(int root, int u, int v);
     void mark_blossom(int lca, int u);
     void blossom_contraction(int s, int u, int v);
     int find_augmenting_path(int s);

@@ -79,4 +79,7 @@ bool** Graph::generate_edmonds_matrix(){
 
 Graph::~Graph() {
     //TODO?
+    for (int i = 0; i < node_list.size(); ++i) {
+        delete(node_list[i]);
+    }
 }

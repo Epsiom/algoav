@@ -1,5 +1,6 @@
 #include "Blossom.h"
 #include "Graph.h"
+#include "EdmondsKarp.h"
 #include <bits/stdc++.h>
 
 
@@ -10,7 +11,7 @@ void Blossom::add_edge(int u, int v) {
     top->v = u, top->n = adj[v], adj[v] = top++;
 }
 
-int Blossom::LCA(int root, int u, int v) {
+int Blossom::findBlossom(int root, int u, int v) {
     static bool inp[M];
     memset(inp, 0, sizeof(inp));
     while (1) {
@@ -34,7 +35,7 @@ void Blossom::mark_blossom(int lca, int u) {
 }
 
 void Blossom::blossom_contraction(int s, int u, int v) {
-    int lca = LCA(s, u, v);
+    int lca = findBlossom(s, u, v);
     memset(inb, 0, sizeof(inb));
     mark_blossom(lca, u);
     mark_blossom(lca, v);
@@ -119,24 +120,7 @@ Blossom::Blossom(int n2,double p) {
             }
         }
     }
-    //cout << "#edges" << E << "\n";
-    //cout << "#edgesAtt" << n2 * (n2 - 1) << "\n";
-    //cout << "#nodes" << n2 << "\n";
 
-    /*int u,v;
-    //cin>>V>>E;
-    V=n;
-
-    while(E--)
-    {
-        cin>>u>>v;
-        if (!ed[u-1][v-1])
-        {
-            add_edge(u-1,v-1);
-            ed[u-1][v-1]=ed[v-1][u-1]=true;
-        }
-    }
-*/
     pairs = edmonds();
 
     delete(g);
@@ -155,19 +139,47 @@ void Blossom::printMatch(){
 
 int main(){
 
-    int nbRun=1000;
+    int n=1000;
+    int nbRun=100;
+    cout<<"estBiparti;ProbabiliteDarrete;NombreCouplageParfait;NombreDeRun"<<endl;
 
-    for (int i = 0; i <= 20; ++i) {
+
+    for (int i = 0; i <= 30; ++i) {
         double p=i/1000.;
-        cout<<p<<"\n";
+        int perfect = 0;
+
+        for (int j = 0; j < nbRun; ++j) {
+            Graph* g = new Graph(n,p, true);     //Bipartite
+            //Graph* my_graph = new Graph(n,p, false);  //Not bipartite
+            bool** edm = g->generate_edmonds_matrix();
+            if (find_max_flow(edm, n/2, n/2) == n/2){
+                perfect++;
+            }
+            delete(g);
+            delete(edm);
+        }
+        cout << "true;"<<p<<";"<<perfect<<";"<<nbRun<<endl;
+        //cout<<"Result for N=1000 and p="<<p<<" have "<<perfect<<" perfect matching on " << nbRun <<" runs"<<endl;
+    }
+
+
+
+    for (int i = 0; i <= 30; ++i) {
+        double p=i/1000.;
         int perfect = 0;
         for (int j = 0; j < nbRun; ++j) {
-            Blossom* b = new Blossom(1000,p);
+            Blossom* b = new Blossom(n,p);
             if(b->isPerfect())
             perfect++;
             delete(b);
         }
-        cout<<"Result for N=1000 and p="<<p<<" have "<<perfect<<" perfect matching on " << nbRun <<" runs"<<endl;
+        cout << "false;"<<p<<";"<<perfect<<";"<<nbRun<<endl;
+        //cout<<"Result for N=1000 and p="<<p<<" have "<<perfect<<" perfect matching on " << nbRun <<" runs"<<endl;
     }
+
+
+
+
+
 
 }
